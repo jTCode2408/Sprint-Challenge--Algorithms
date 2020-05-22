@@ -98,28 +98,27 @@ class SortingRobot:
 #(how to know what 1st elm is?) -canmoveleft(return false if at start)
 #move right to compare next (check if can move right 1st):
 #if next elm is greater than, swap
-#if cant go right, go back left(check if csn go left)
+#if cant go right, at end
 #go left, check for open position to put elm
-#move to next elm, and repeat compare/swap/place process again until no more elms to compare(end)
+#move to next elm, and repeat loop compare/swap/place process again until no more elms to compare(end)
 #canmoveright(return false if at end)
 #bubble
-#how to end loop?
+#how to end loop? if none left to compare
     def sort(self):
         self.set_light_on() #turn light on to start
         while self.light_is_on(): #only loop when light on
             self.set_light_off()
             self.swap_item() #get 1st card
-            while self.can_move_right():
+            while self.can_move_right(): #while i can go right:
                 self.move_right() #go right to compare
-                if self.compare_item() == 1: #greater returns 1
-                    self.swap_item() #swap cards
-                #go back left to find empty space
+                if self.compare_item() == 1: #if right is greater returns 1
+                    self.swap_item() #swap cards 
                     self.set_light_on() #turn on looping light
-            while self.can_move_left():
+            while self.can_move_left(): #go left for empty spot
                 self.move_left() #if empty spot when going backwards left in list compare will return none 
                 if self.compare_item() ==None:
                     self.swap_item() #put card down
-                    return #stop for restart
+                    break #stop for restart
             self.move_right() #move spot over to start again
                 
         while self.can_move_right(): 

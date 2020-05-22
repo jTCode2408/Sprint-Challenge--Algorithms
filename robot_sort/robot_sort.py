@@ -102,12 +102,26 @@ class SortingRobot:
 #go left, check for open position to put elm
 #move to next elm, and repeat compare/swap/place process again until no more elms to compare(end)
 #canmoveright(return false if at end)
+#bubble
+#how to end loop?
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        if self.can_move_left is not False: #check if at start
+            self.swap_item() #get 1st card
+        if self.can_move_right():
+            self.move_right() #go right to compare
+            if self.compare_item() == 1: #greater returns 1
+                self.swap_item() #put card down
+                
+        if self.can_move_left():
+            self.move_left()
+            if self.compare_item() == None: #if empty spot when going backwards in list compare return none 
+                self.swap_item() #put card down
+        
+
+
+
+
+
 
     
 '''

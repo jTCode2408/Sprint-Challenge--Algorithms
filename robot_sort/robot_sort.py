@@ -98,51 +98,36 @@ class SortingRobot:
 #(how to know what 1st elm is?) -canmoveleft(return false if at start)
 #move right to compare next (check if can move right 1st):
 #if next elm is greater than, swap
-#if cant go right, go left to compare(check if csn go left)
+#if cant go right, go back left(check if csn go left)
 #go left, check for open position to put elm
 #move to next elm, and repeat compare/swap/place process again until no more elms to compare(end)
 #canmoveright(return false if at end)
 #bubble
 #how to end loop?
     def sort(self):
-        if self.can_move_left != False: #check if at start
-            self.set_light_on() #turn light on to start
+        self.set_light_on() #turn light on to start
         while self.light_is_on(): #only loop when light on
+            self.set_light_off()
             self.swap_item() #get 1st card
-        while self.can_move_right():
-            self.move_right() #go right to compare
-            if self.compare_item() == 1: #greater returns 1
-                self.swap_item() #swap cards
+            while self.can_move_right():
+                self.move_right() #go right to compare
+                if self.compare_item() == 1: #greater returns 1
+                    self.swap_item() #swap cards
                 #go back left to find empty space
-        while self.can_move_left():
-            self.move_left()
-            if self.compare_item() == None: #if empty spot when going backwards in list compare return none 
-                self.swap_item() #put card down
-                self.move_right() #move over to start again
-                if self.can_move_right == False:
-                    self.set_light_off()
-                else:
-                    self.set_light_on() #repeat process
+                    self.set_light_on() #turn on looping light
+            while self.can_move_left():
+                self.move_left() #if empty spot when going backwards left in list compare will return none 
+                if self.compare_item() ==None:
+                    self.swap_item() #put card down
+                    return #stop for restart
+            self.move_right() #move spot over to start again
+                
+        while self.can_move_right(): 
+            self.move_right() #go right to find place for last cadr
 
-        
-
-
-
+        self.swap_item()
 
 
-
-    
-'''
- * You may use any pre-defined robot methods.
-  * You may NOT modify any pre-defined robot methods.
-  * You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
-  * You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
-  * You may use iterators. (`while`, `for`, `break`, `continue`)
-  * You may NOT store any variables. (`=`)
-  * You may NOT access any instance variables directly. (`self._anything`)
-  * You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
-  * You may define robot helper methods, as long as they follow all the rules.
-'''
 
 
 if __name__ == "__main__":

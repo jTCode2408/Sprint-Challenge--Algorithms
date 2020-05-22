@@ -105,17 +105,25 @@ class SortingRobot:
 #bubble
 #how to end loop?
     def sort(self):
-        if self.can_move_left is not False: #check if at start
+        if self.can_move_left != False: #check if at start
+            self.set_light_on() #turn light on to start
+        while self.light_is_on(): #only loop when light on
             self.swap_item() #get 1st card
-        if self.can_move_right():
+        while self.can_move_right():
             self.move_right() #go right to compare
             if self.compare_item() == 1: #greater returns 1
-                self.swap_item() #put card down
-                
-        if self.can_move_left():
+                self.swap_item() #swap cards
+                #go back left to find empty space
+        while self.can_move_left():
             self.move_left()
             if self.compare_item() == None: #if empty spot when going backwards in list compare return none 
                 self.swap_item() #put card down
+                self.move_right() #move over to start again
+                if self.can_move_right == False:
+                    self.set_light_off()
+                else:
+                    self.set_light_on() #repeat process
+
         
 
 

@@ -92,6 +92,16 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+
+#what is "light" needed for? (can use as checker/pointer maybe?)
+#start at head/ 1st elm
+#(how to know what 1st elm is?) -canmoveleft(return false if at start)
+#move right to compare next (check if can move right 1st):
+#if next elm is greater than, swap
+#if cant go right, go left to compare(check if csn go left)
+#go left, check for open position to put elm
+#move to next elm, and repeat compare/swap/place process again until no more elms to compare(end)
+#canmoveright(return false if at end)
     def sort(self):
         """
         Sort the robot's list.

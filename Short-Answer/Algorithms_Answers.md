@@ -37,6 +37,7 @@ Suppose that you have an n-story building and plenty of eggs. Suppose also that 
 
 Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
+
 -Use Binary search method.
 -find midpoinnt of building floors using floor division(//2)
 -if egg breaks, will have to go lower until doesnt break.

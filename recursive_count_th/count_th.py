@@ -22,6 +22,7 @@ def count_th(word):
         return 0
 
     else:
-    
-    
-    return count_th()
+        if word[0:2]== "th": #if word has chars first 2 spaces, add to count and recursive call to run fn again, moving 2 spaces to in word
+            return 1 + count_th(word[2:])
+        else:
+            return count_th(word[1:])#if dont find word first, recursive call word traversing string

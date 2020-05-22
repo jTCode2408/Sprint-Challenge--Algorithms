@@ -38,9 +38,11 @@ Suppose that you have an n-story building and plenty of eggs. Suppose also that 
 Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
 -Use Binary search method.
--find midpoinnt of floors using floor division
--if egg breaks, go lower and repeat process again until doesnt break.
--if egg doesnt break, go higer and do the same thing(divide, check if breaks from floor on) until egg doesnt break.
+-find midpoinnt of building floors using floor division(//2)
+-if egg breaks, will have to go lower until doesnt break.
+-go lower, find mid of lower floors drop. If egg breaks, go lower. If doesnt break needs to go higher and do same thing.
+-if egg doesnt break, know I can go higher. 
+-Go high, find mid, repeat drop process(lower,higher, mid, drop)
 -will keep doing process until highest floor is found(without breaking egg)
 
 -Using binary search would be runtime of O(log n)
